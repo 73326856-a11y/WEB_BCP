@@ -2,10 +2,30 @@
 // =============================================
 // CONFIGURACIÓN GLOBAL DE SUPABASE
 // =============================================
-const SUPABASE_URL = 'https://qprlctybnsdivacitaly.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_wV5PE-pPmrTQH0QkI7IjAw_MsJ_eSUB';
+const SUPABASE_URL = 'https://mzwfyrnaevskahsrslis.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_zaZc6eL8hjPnUNLDD4E20Q_EVnpp2PL';
 
 const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// 2. Función de prueba para traer datos de una tabla
+async function obtenerDatos() {
+  const { data, error } = await supabase
+    .from('tu_tabla') // Reemplaza 'tu_tabla' por el nombre real de tu tabla en Supabase
+    .select('*');
+
+  if (error) {
+    console.error('Error al conectar con Supabase:', error);
+  } else {
+    console.log('Datos recibidos de Supabase:', data);
+  }
+}
+
+// 3. Llamar a la función cuando cargue la página
+document.addEventListener('DOMContentLoaded', () => {
+  obtenerDatos();
+});
+
+
 
 // Evento principal: se ejecuta cuando la página carga completamente
 document.addEventListener('DOMContentLoaded', () => {
